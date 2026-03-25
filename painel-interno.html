@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LivebFlow - Painel de Gestão Liveb Bank">
+    <title>LivebFlow - Painel de Gestão</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.livebbank.com.br/static/images/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS + DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0d6efd',
+                        'primary-dark': '#0a58ca',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50">
+    <!-- Navbar -->
+    <nav class="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <!-- Logo -->
+            <div class="flex-1">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10">
+                    <span class="font-bold text-slate-700 text-xl border-l-2 border-slate-200 pl-3">LivebFlow</span>
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex flex-none">
+                <ul class="menu menu-horizontal px-1 gap-1">
+                    <li><a href="#" class="font-medium text-primary">Dashboard</a></li>
+                    <li><a href="cadastro.html" class="font-medium">Nova Imobiliária</a></li>
+                    <li><a href="#" class="font-medium">Nova Fiança</a></li>
+                </ul>
+            </div>
+
+            <!-- CTA Buttons / User Profile -->
+            <div class="hidden lg:flex items-center gap-3 ml-4">
+                <div class="flex flex-col text-right mr-2">
+                    <span class="text-sm font-bold text-slate-800">Administrador</span>
+                    <span class="text-xs text-slate-500">Liveb Bank</span>
+                </div>
+                <div class="avatar placeholder">
+                  <div class="bg-blue-100 text-primary rounded-full w-10">
+                    <span class="font-semibold">AD</span>
+                  </div>
+                </div>
+                <!-- Sair Button -->
+                <a href="painel/login/index.html" class="btn btn-outline btn-error btn-sm ml-2">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex-none lg:hidden">
+                <label for="mobile-drawer" class="btn btn-square btn-ghost">
+                    <i class="bi bi-list text-2xl"></i>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer drawer-end lg:hidden">
+        <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-side z-50">
+            <label for="mobile-drawer" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-80 min-h-full bg-base-100">
+                <li><a href="#" class="text-primary font-bold">Dashboard</a></li>
+                <li><a href="cadastro.html">Nova Imobiliária</a></li>
+                <li><a href="#">Nova Fiança</a></li>
+                <li class="mt-4">
+                    <a href="painel/login/index.html" class="btn btn-error btn-outline mt-auto">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <div class="py-6 sm:py-8 min-h-full">
+            <div class="container mx-auto px-4">
+                <!-- Header Dashboard -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-slate-800">Esteira de Contratos</h1>
+                        <p class="text-slate-500 text-sm sm:text-base">Gerencie as fianças locatícias ativas no sistema</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="btn btn-primary"><i class="bi bi-plus-lg"></i> Nova Fiança</button>
+                    </div>
+                </div>
+
+                <!-- Quadro Kanban -->
+                <div class="flex flex-col lg:flex-row gap-6 items-start overflow-x-auto pb-4">
+                    
+                    <!-- Coluna 1: Pendência de Docs -->
+                    <div class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                                <i class="bi bi-file-earmark-text text-amber-500"></i> Pendência de Docs
+                            </h3>
+                            <span class="badge badge-sm bg-slate-300 text-slate-700 font-semibold border-none">2</span>
+                        </div>
+                        
+                        <!-- Cartão 1 -->
+                        <div class="card bg-base-100 shadow-sm border border-slate-200 hover:shadow-md cursor-pointer transition-shadow">
+                            <div class="card-body p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">LOC-2026-003</span>
+                                    <span class="text-xs text-slate-400">Há 2h</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-800">Carlos Eduardo Mendes</h4>
+                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Imobiliária Central SP</p>
+                                
+                                <div class="flex flex-col gap-1 mb-3">
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Aluguel:</span> <span class="font-semibold">R$ 2.800,00</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Plano:</span> <span class="font-semibold text-amber-600">Gold (45x)</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-red-50 text-red-600 p-2 rounded-lg text-xs flex items-start gap-1">
+                                    <i class="bi bi-exclamation-triangle-fill mt-0.5"></i>
+                                    <span>Aguardando envio do comprovante de renda do cônjuge.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cartão 2 -->
+                        <div class="card bg-base-100 shadow-sm border border-slate-200 hover:shadow-md cursor-pointer transition-shadow">
+                            <div class="card-body p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">LOC-2026-015</span>
+                                    <span class="text-xs text-slate-400">Ontem</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-800">Marina de Oliveira Santos</h4>
+                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Lupa Imóveis</p>
+                                
+                                <div class="flex flex-col gap-1 mb-3">
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Aluguel:</span> <span class="font-semibold">R$ 4.500,00</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Plano:</span> <span class="font-semibold text-slate-800">Black (50x)</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-amber-50 text-amber-700 p-2 rounded-lg text-xs flex items-start gap-1">
+                                    <i class="bi bi-clock-history mt-0.5"></i>
+                                    <span>Assinatura do contrato de locação pendente.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2: Análise de Crédito -->
+                    <div class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                                <i class="bi bi-search text-blue-500"></i> Análise de Crédito
+                            </h3>
+                            <span class="badge badge-sm bg-slate-300 text-slate-700 font-semibold border-none">1</span>
+                        </div>
+
+                        <!-- Cartão 3 -->
+                        <div class="card bg-base-100 shadow-sm border border-slate-200 border-l-4 border-l-blue-500 hover:shadow-md cursor-pointer transition-shadow">
+                            <div class="card-body p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">LOC-2026-021</span>
+                                    <span class="text-xs text-slate-400">Há 15min</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-800">Roberto Almeida Prado</h4>
+                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Casa Nova Consultoria</p>
+                                
+                                <div class="flex flex-col gap-1 mb-3">
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Aluguel:</span> <span class="font-semibold">R$ 1.200,00</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Plano:</span> <span class="font-semibold text-slate-400">Silver (40x)</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-2 mt-2">
+                                    <div class="radial-progress text-blue-500" style="--value:70; --size:1.2rem; --thickness: 2px;" role="progressbar"></div>
+                                    <span class="text-xs text-slate-600 font-medium pt-0.5">Buscando dados nos birôs...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 3: Fiança Emitida -->
+                    <div class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-slate-700 flex items-center gap-2">
+                                <i class="bi bi-award-fill text-emerald-500"></i> Fiança Emitida
+                            </h3>
+                            <span class="badge badge-sm bg-slate-300 text-slate-700 font-semibold border-none">2</span>
+                        </div>
+
+                        <!-- Cartão 4 -->
+                        <div class="card bg-base-100 shadow-sm border border-slate-200 border-l-4 border-l-emerald-500 hover:shadow-md cursor-pointer transition-shadow">
+                            <div class="card-body p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">LOC-2026-001</span>
+                                    <span class="text-xs text-slate-400">Ontem</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-800">Ana Beatriz Freitas</h4>
+                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Imobiliária Central SP</p>
+                                
+                                <div class="flex flex-col gap-1 mb-2">
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Aluguel:</span> <span class="font-semibold">R$ 8.900,00</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Plano:</span> <span class="font-semibold text-cyan-600">Diamond (60x)</span>
+                                    </div>
+                                    <div class="text-xs text-emerald-600 flex justify-between mt-1 pt-1 border-t border-slate-100">
+                                        <span>Certificado:</span> <span class="font-bold">#LIVEB-88392</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn-xs btn-outline btn-success w-full mt-2"><i class="bi bi-download"></i> Baixar Certificado</button>
+                            </div>
+                        </div>
+
+                        <!-- Cartão 5 -->
+                        <div class="card bg-base-100 shadow-sm border border-slate-200 border-l-4 border-l-emerald-500 hover:shadow-md cursor-pointer transition-shadow">
+                            <div class="card-body p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">LOC-2026-008</span>
+                                    <span class="text-xs text-slate-400">Há 3 dias</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-800">Fábio Lima Costa</h4>
+                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Prime Imóveis</p>
+                                
+                                <div class="flex flex-col gap-1 mb-2">
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Aluguel:</span> <span class="font-semibold">R$ 3.200,00</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 flex justify-between">
+                                        <span>Plano:</span> <span class="font-semibold text-amber-600">Gold (45x)</span>
+                                    </div>
+                                    <div class="text-xs text-emerald-600 flex justify-between mt-1 pt-1 border-t border-slate-100">
+                                        <span>Certificado:</span> <span class="font-bold">#LIVEB-88385</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn-xs btn-outline btn-success w-full mt-2"><i class="bi bi-download"></i> Baixar Certificado</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brand -->
+                <div>
+                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10 brightness-0 invert mb-4">
+                    <p class="text-slate-400 text-sm mb-4">Transformando o futuro da locação com inovação, confiança e rapidez.</p>
+                    <p class="text-slate-500 text-xs">Liveb Bank S/A</p>
+                    <p class="text-slate-500 text-xs">CNPJ: 42.206.486/0001-69</p>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h6 class="font-semibold text-white mb-4">Navegação Interna</h6>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Dashboard</a></li>
+                        <li><a href="cadastro.html" class="hover:text-white transition">Nova Imobiliária</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nova Fiança</a></li>
+                        <li><a href="#" class="hover:text-white transition">Meus Dados</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h6 class="font-semibold text-white mb-4">Suporte ao Colaborador</h6>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex gap-2 items-center">
+                            <i class="bi bi-envelope"></i>
+                            suporte@livebbank.com.br
+                        </li>
+                        <li class="flex gap-2 items-center">
+                            <i class="bi bi-telephone"></i>
+                            Ramal: 4001
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="divider before:bg-slate-700 after:bg-slate-700 my-8"></div>
+
+            <div class="text-center text-slate-500 text-sm">
+                &copy; 2026 Liveb Bank – Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
