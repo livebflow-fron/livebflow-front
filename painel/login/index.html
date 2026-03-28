@@ -51,12 +51,14 @@
         <!-- Login Card -->
         <div class="card bg-white shadow-xl">
             <div class="card-body">
-                
 
-                
+                <!-- Mensagem de erro -->
+                <div id="login-error" class="hidden alert alert-error text-sm py-2 px-4 mb-2">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <span id="login-error-msg">Email ou senha inválidos.</span>
+                </div>
 
-                <form method="POST" action="/api/login" class="space-y-4">
-                    <input type="hidden" name="csrfmiddlewaretoken" value="Jk7DlDHgdaM3zZc6dj0B0IXY0ul7YCf4oWko38sFbEbutvucB84XyyHaBnDIsRCy">
+                <form id="login-form" class="space-y-4">
 
                     <div class="form-control">
                         <label class="label">
@@ -88,7 +90,7 @@
                         <a href="../senha/recuperar/index.html" class="text-sm text-primary hover:underline">Esqueceu a senha?</a>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-full">
+                    <button type="submit" id="btn-login" class="btn btn-primary w-full">
                         <i class="bi bi-box-arrow-in-right mr-2"></i>
                         Entrar
                     </button>
@@ -127,6 +129,59 @@ function togglePassword(inputId, iconId) {
         icon.classList.add('bi-eye');
     }
 }
+
+// Redireciona se já estiver logado
+if (localStorage.getItem('token')) {
+    window.location.href = '../../painel-interno.html';
+}
+
+document.getElementById('login-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const errorBox = document.getElementById('login-error');
+    const errorMsg = document.getElementById('login-error-msg');
+    const btn = document.getElementById('btn-login');
+
+    errorBox.classList.add('hidden');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="loading loading-spinner loading-sm"></span> Entrando...';
+
+    const payload = {
+        email: document.getElementById('id_username').value,
+        senha: document.getElementById('password').value
+    };
+
+    try {
+        const response = await fetch('http://localhost:8080/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok) {
+            errorMsg.textContent = data?.message || 'Email ou senha inválidos.';
+            errorBox.classList.remove('hidden');
+            return;
+        }
+
+        // Salva token e dados do usuário
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('perfil', data.perfil);
+        localStorage.setItem('email', data.email);
+
+        // Redireciona para o painel interno
+        window.location.href = '../../painel-interno.html';
+
+    } catch (err) {
+        errorMsg.textContent = 'Não foi possível conectar ao servidor. Tente novamente.';
+        errorBox.classList.remove('hidden');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-box-arrow-in-right mr-2"></i> Entrar';
+    }
+});
 </script>
 </body>
 </html>
