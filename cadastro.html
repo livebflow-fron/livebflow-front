@@ -116,7 +116,9 @@
             <!-- Formulário Corporativo -->
             <div class="card bg-base-100 shadow-sm border border-slate-200">
                 <div class="card-body p-6 sm:p-8">
-                    <form action="/api/imobiliarias" method="POST" class="space-y-6">
+                    <div id="feedback" class="hidden rounded-lg border px-4 py-3 text-sm"></div>
+
+                    <form id="imobiliaria-form" class="space-y-6">
                         
                         <!-- Razão Social -->
                         <div class="form-control w-full">
@@ -157,7 +159,7 @@
 
                         <!-- Botão -->
                         <div class="flex justify-end gap-3">
-                            <button type="button" class="btn btn-ghost text-slate-500">Cancelar</button>
+                            <button type="reset" class="btn btn-ghost text-slate-500">Cancelar</button>
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-floppy mr-2"></i>
                                 Salvar Cadastro
@@ -220,6 +222,82 @@
         </div>
     </footer>
 
-    
+    <script>
+        const form = document.getElementById('imobiliaria-form');
+        const feedback = document.getElementById('feedback');
+        let feedbackTimeoutId;
+
+        function clearFeedback() {
+            feedback.className = 'hidden rounded-lg border px-4 py-3 text-sm';
+            feedback.textContent = '';
+
+            if (feedbackTimeoutId) {
+                clearTimeout(feedbackTimeoutId);
+                feedbackTimeoutId = null;
+            }
+        }
+
+        function showFeedback(type, message) {
+            feedback.className = 'rounded-lg border px-4 py-3 text-sm';
+
+            if (feedbackTimeoutId) {
+                clearTimeout(feedbackTimeoutId);
+                feedbackTimeoutId = null;
+            }
+
+            if (type === 'success') {
+                feedback.classList.add('border-emerald-200', 'bg-emerald-50', 'text-emerald-700');
+                feedbackTimeoutId = setTimeout(clearFeedback, 5000);
+            } else {
+                feedback.classList.add('border-red-200', 'bg-red-50', 'text-red-700');
+            }
+
+            feedback.textContent = message;
+        }
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const payload = {
+                razaoSocial: formData.get('razao_social'),
+                cnpj: formData.get('cnpj'),
+                email: formData.get('email'),
+                telefone: formData.get('telefone')
+            };
+
+            try {
+                const response = await fetch('http://localhost:8080/api/imobiliarias', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json().catch(() => null);
+
+                if (!response.ok) {
+                    const message = data?.message || 'Nao foi possivel salvar a imobiliaria.';
+                    throw new Error(message);
+                }
+
+                form.reset();
+                showFeedback('success', 'Imobiliaria cadastrada com sucesso.');
+            } catch (error) {
+                showFeedback('error', error.message || 'Erro inesperado ao salvar cadastro.');
+            }
+        });
+
+        form.addEventListener('reset', () => {
+            clearFeedback();
+        });
+
+        form.addEventListener('input', () => {
+            if (!feedback.classList.contains('hidden')) {
+                clearFeedback();
+            }
+        });
+    </script>
 </body>
 </html>
