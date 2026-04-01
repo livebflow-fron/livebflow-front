@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Kanban - Liveb Bank S/A</title>
+    <style>
+        /* Paleta Oficial Liveb Bank S/A */
+        :root {
+            --azul-principal: #0047ba;
+            --azul-hover: #004c99;      /* Azul claro para o hover do menu */
+            --branco-fundo: #f6f6f6;    /* Branco/Gelo para a área de trabalho */
+            --cinza-coluna: #e5e6e6;    /* Fundo das colunas (A fazer, etc) */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: var(--azul-principal);
+        }
+
+        /* Menu Lateral */
+        .sidebar {
+            width: 250px;
+            background-color: var(--azul-principal);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .menu-item {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        /* O efeito de passar o mouse no menu que você pediu */
+        ..menu-item:hover {
+            background-color: #004c99; /* O azul claro de destaque que você mencionou */
+            color: white;
+        }
+
+        .menu-item.ativo {
+            background-color: #004c99; /* Mantém realçado quando você está na página */
+            font-weight: bold;
+        }
+
+        /* Área do Kanban */
+        .kanban-board {
+            flex: 1;
+            background-color: var(--branco-fundo);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding: 40px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+        }
+
+        /* As 3 Colunas com o novo fundo */
+        .coluna {
+            flex: 1;
+            background-color: var(--cinza-coluna);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .coluna h3 {
+            text-align: center;
+            color: var(--azul-principal);
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d1d5db;
+        }
+
+        /* Os Cartões de Fiança */
+        .cartao-proposta {
+            background-color: #ffffff; /* Cartão puramente branco para destacar do fundo da coluna */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            cursor: grab;
+            border-left: 4px solid var(--azul-principal);
+            transition: transform 0.1s;
+        }
+
+        .cartao-proposta:hover {
+            transform: translateY(-2px);
+        }
+
+        .cartao-proposta h4 { margin: 0 0 10px 0; color: #333; }
+        .cartao-proposta p { margin: 5px 0; font-size: 14px; color: #555; }
+
+        .etiqueta {
+            display: inline-block;
+            background: var(--cinza-coluna);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--azul-principal);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">Liveb Bank S/A</div>
+
+    <a href="index.html" class="menu-item">Início</a>
+
+    <a href="kanban.html" class="menu-item ativo">Propostas</a>
+
+    <a href="calendario.html" class="menu-item">Calendário</a>
+
+    <div style="margin-top: auto;">
+        <a href="login.html" class="menu-item">Sair</a>
+    </div>
+</div>
+
+<div class="kanban-board">
+    <div class="coluna" id="coluna-a-fazer" ondragover="permitirSoltar(event)" ondrop="soltar(event, 'A Fazer')">
+        <h3>A Fazer</h3>
+    </div>
+
+    <div class="coluna" id="coluna-em-analise" ondragover="permitirSoltar(event)" ondrop="soltar(event, 'Em Análise')">
+        <h3>Em andamento</h3>
+    </div>
+
+    <div class="coluna" id="coluna-aprovada" ondragover="permitirSoltar(event)" ondrop="soltar(event, 'Aprovada')">
+        <h3>Concluído</h3>
+    </div>
+</div>
+
+<script>
+    async function carregarPropostas() {
+        try {
+            const resposta = await fetch('http://localhost:8080/api/propostas');
+            const propostas = await resposta.json();
+
+            document.getElementById('coluna-a-fazer').innerHTML = '<h3>A Fazer</h3>';
+            document.getElementById('coluna-em-analise').innerHTML = '<h3>Em andamento</h3>';
+            document.getElementById('coluna-aprovada').innerHTML = '<h3>Concluído</h3>';
+
+            propostas.forEach(proposta => {
+                const valorFormatado = proposta.valorAluguel.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2, maximumFractionDigits: 2
+                });
+
+                // ADICIONADO: draggable="true" e ondragstart para o cartão "pegar no tranco"
+                const cartao = `
+                        <div class="cartao-proposta" id="proposta-${proposta.id}" draggable="true" ondragstart="arrastar(event)">
+                            <h4>Fiança ${String(proposta.id).padStart(3, '0')}</h4>
+                            <p><strong>Imobiliária:</strong> ${proposta.nomeImobiliaria}</p>
+                            <p><strong>Inquilino:</strong> ${proposta.nomeInquilino}</p>
+                            <p><strong>Valor:</strong> R$ ${valorFormatado}</p>
+                        </div>
+                    `;
+
+                if (proposta.statusKanban === 'A Fazer') {
+                    document.getElementById('coluna-a-fazer').innerHTML += cartao;
+                } else if (proposta.statusKanban === 'Em Análise') {
+                    document.getElementById('coluna-em-analise').innerHTML += cartao;
+                } else if (proposta.statusKanban === 'Aprovada') {
+                    document.getElementById('coluna-aprovada').innerHTML += cartao;
+                }
+            });
+        } catch (erro) {
+            console.error("Erro ao conectar com o Java: ", erro);
+        }
+    }
+
+    // --- AS 3 FUNÇÕES MÁGICAS DE ARRASTAR E SOLTAR ---
+
+    function arrastar(event) {
+        // Guarda o ID do cartão que está sendo arrastado
+        event.dataTransfer.setData("idCartao", event.target.id);
+    }
+
+    function permitirSoltar(event) {
+        event.preventDefault(); // Necessário para o navegador deixar soltar
+    }
+
+    async function soltar(event, novoStatus) {
+        event.preventDefault();
+        const idCartao = event.dataTransfer.getData("idCartao"); // Ex: "proposta-2"
+        const idBanco = idCartao.split("-")[1]; // Pega só o número "2"
+        const cartao = document.getElementById(idCartao);
+
+        // Garante que o cartão caia dentro da coluna certa (e não dentro do título)
+        let alvo = event.target;
+        while (!alvo.classList.contains('coluna')) {
+            alvo = alvo.parentElement;
+        }
+        alvo.appendChild(cartao);
+
+        // Bate na porta do Java e avisa: "Atualiza o status desse cara no banco de dados!"
+        try {
+            await fetch(`http://localhost:8080/api/propostas/${idBanco}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ statusKanban: novoStatus })
+            });
+            console.log(`Sucesso: Fiança ${idBanco} agora está em ${novoStatus}`);
+        } catch (erro) {
+            console.error("Erro ao atualizar o banco: ", erro);
+        }
+    }
+
+    window.onload = carregarPropostas;
+</script>
+</body>
+</html>
