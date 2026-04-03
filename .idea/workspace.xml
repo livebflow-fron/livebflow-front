@@ -5,25 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fe55b43-b34e-49a1-b02d-54ba30dcdbe3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/livebflow/src/main/java/com/livebbank/livebflow/LivebflowApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/livebflow/src/main/java/com/livebbank/livebflow/controller/PropostaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/livebflow/src/main/java/com/livebbank/livebflow/model/Proposta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/livebflow/src/main/java/com/livebbank/livebflow/repository/PropostaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/livebflow/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/painel/kanban.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/painel/nova-proposta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html.origZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.htmlZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/painel/login/index.html.origZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/painel/login/index.htmlZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/painel/senha/recuperar/index.html.origZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/painel/senha/recuperar/index.htmlZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html.orig" beforeDir="false" afterPath="$PROJECT_DIR$/index.html.orig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/painel-interno.html" beforeDir="false" afterPath="$PROJECT_DIR$/painel-interno.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/painel/kanban.html" beforeDir="false" afterPath="$PROJECT_DIR$/painel/kanban.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/painel/login/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/painel/login/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/painel/login/index.html.orig" beforeDir="false" afterPath="$PROJECT_DIR$/painel/login/index.html.orig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/painel/senha/recuperar/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/painel/senha/recuperar/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/painel/senha/recuperar/index.html.orig" beforeDir="false" afterPath="$PROJECT_DIR$/painel/senha/recuperar/index.html.orig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seja-parceiro/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/seja-parceiro/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seja-parceiro/index.html.origZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seja-parceiro/index.htmlZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/hero-image.jpgZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/liveb-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/liveb-logo.pngZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seja-parceiro/index.html.orig" beforeDir="false" afterPath="$PROJECT_DIR$/seja-parceiro/index.html.orig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="64" />
+    <option name="cachedIndexableFilesCount" value="65" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -122,7 +115,9 @@
       <workItem from="1774478456104" duration="118000" />
       <workItem from="1774695397246" duration="2104000" />
       <workItem from="1775006968498" duration="2663000" />
-      <workItem from="1775043600806" duration="3944000" />
+      <workItem from="1775043600806" duration="4124000" />
+      <workItem from="1775050082988" duration="1770000" />
+      <workItem from="1775250379614" duration="4000" />
     </task>
     <servers />
   </component>

@@ -4,199 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Proposta - Liveb Bank S/A</title>
-    <style>
-        :root {
-            --azul-principal: #0047ba;
-            --azul-hover: #004c99;
-            --branco-fundo: #f6f6f6;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            height: 100vh;
-            background-color: var(--azul-principal);
-        }
-
-        /* Menu Lateral (Igual ao do Kanban) */
-        .sidebar {
-            width: 250px;
-            background-color: var(--azul-principal);
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .logo { font-size: 22px; font-weight: bold; margin-bottom: 40px; letter-spacing: 1px;}
-        .menu-item { color: #e0e0e0; text-decoration: none; padding: 12px; border-radius: 5px; transition: background-color 0.2s;}
-        .menu-item:hover, .menu-item.ativo { background-color: var(--azul-hover); color: white; font-weight: bold; }
-
-        /* Área Principal */
-        .main-content {
-            flex: 1;
-            background-color: var(--branco-fundo);
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Botão Sair no topo direito */
-        .btn-sair-topo {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: var(--azul-principal);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Card do Formulário */
-        .form-card {
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            width: 400px;
-            text-align: center;
-        }
-
-        .form-card h2 {
-            color: var(--azul-principal);
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-
-        /* Campos do formulário */
-        .input-group {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 8px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #fafafa;
-        }
-
-        /* Botão Salvar */
-        .btn-salvar {
-            background-color: #5b21b6; /* Roxo do Figma */
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 10px;
-        }
-
-        .btn-salvar:hover { background-color: #4c1d95; }
-    </style>
-</head>
-<body>
-
-<div class="sidebar">
-    <div class="logo">Liveb Bank S/A</div>
-    <a href="#" class="menu-item">Início</a>
-    <a href="kanban.html" class="menu-item ativo">Fiança Locatícia</a>
-    <a href="#" class="menu-item">Calendário</a>
-</div>
-
-<div class="main-content">
-    <a href="#" class="btn-sair-topo">Sair</a>
-
-    <div class="form-card">
-        <h2>Nova Proposta</h2>
-
-        <form id="form-proposta">
-            <div class="input-group">
-                <label>Nome da Imobiliária</label>
-                <input type="text" id="nomeImobiliaria" placeholder="Ex: Imobiliária Central" required>
-            </div>
-
-            <div class="input-group">
-                <label>Nome do Inquilino</label>
-                <input type="text" id="nomeInquilino" placeholder="Ex: João da Silva" required>
-            </div>
-
-            <div class="input-group">
-                <label>Valor do Aluguel</label>
-                <input type="number" id="valorAluguel" placeholder="Ex: 2500.00" step="0.01" required>
-            </div>
-
-            <div class="input-group">
-                <label>Data de vencimento</label>
-                <input type="date" id="dataVencimento" required>
-            </div>
-
-            <button type="submit" class="btn-salvar">Salvar</button>
-        </form>
-    </div>
-</div>
-
-</body>
-<script>
-    document.getElementById('form-proposta').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        // 1. Pega os valores
-        const nomeImobiliaria = document.getElementById('nomeImobiliaria').value.trim();
-        const nomeInquilino = document.getElementById('nomeInquilino').value.trim();
-        const valorAluguel = document.getElementById('valorAluguel').value;
-        const dataVencimento = document.getElementById('dataVencimento').value;
-
-        // 2. A TRAVA: Se algum campo estiver vazio, avisa o usuário e para tudo!
-        if (!nomeImobiliaria || !nomeInquilino || !valorAluguel || !dataVencimento) {
-            alert("⚠️ Por favor, preencha todos os campos antes de salvar!");
-            return; // O return faz o código parar aqui e não enviar pro banco
-        }
-
-        // 3. Monta o pacote de dados
-        const dadosProposta = {
-            nomeImobiliaria: nomeImobiliaria,
-            nomeInquilino: nomeInquilino,
-            valorAluguel: parseFloat(valorAluguel),
-            dataVencimento: dataVencimento,
-            statusKanban: "A Fazer"
-        };
-
-        try {
-            // 4. Envia pro Java
-            const resposta = await fetch('http://localhost:8080/api/propostas', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dadosProposta)
-            });
-
-            if (resposta.ok) {
-                alert("Fiança cadastrada com sucesso!");
-                window.location.href = "kanban.html";
-            } else {
-                alert("Ops! Alguma coisa deu errado no servidor.");
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#0047ba',
+                        secondary: '#004c99',
+                        bglight: '#f6f6f6',
+                        button: '#5b21b6'
+                    }
+                }
             }
-        } catch (erro) {
-            console.error("Erro de conexão: ", erro);
-            alert("Não consegui conectar com o Java.");
         }
-    });
-</script>
+    </script>
+</head>
+<body class="bg-primary md:bg-bglight text-slate-800 font-sans min-h-screen flex flex-col md:flex-row">
+
+    <!-- Mobile Header -->
+    <div class="md:hidden bg-primary text-white p-4 flex justify-between items-center shadow-md z-10">
+        <img src="../static/images/liveb-logo-branco.svg" onerror="this.src='../static/images/liveb-logo.png'" alt="Liveb Bank" class="h-8">
+        <button id="mobile-menu-btn" class="focus:outline-none"><i class="bi bi-list text-3xl"></i></button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden bg-primary text-white w-full absolute top-16 left-0 z-20 shadow-xl flex-col divide-y divide-secondary">
+        <a href="../index.html" class="block py-4 px-6 hover:bg-secondary">Início</a>
+        <a href="kanban.html" class="block py-4 px-6 bg-secondary font-bold">Fiança Locatícia</a>
+        <a href="calendario.html" class="block py-4 px-6 hover:bg-secondary">Calendário</a>
+        <a href="login/index.html" class="block py-4 px-6 hover:bg-secondary">Sair</a>
+    </div>
+
+    <!-- Desktop Sidebar -->
+    <div class="hidden md:flex flex-col w-64 bg-primary text-white h-screen fixed inset-y-0 left-0 z-50">
+        <div class="p-6">
+            <img src="../static/images/liveb-logo-branco.svg" onerror="this.src='../static/images/liveb-logo.png'" alt="Liveb Bank S/A" class="h-12 mb-8 object-contain">
+        </div>
+        <div class="flex flex-col px-4 space-y-2 flex-grow">
+            <a href="../index.html" class="px-4 py-3 rounded-md hover:bg-secondary transition-colors">Início</a>
+            <a href="kanban.html" class="px-4 py-3 rounded-md bg-secondary font-bold shadow-inner border-l-4 border-white">Fiança Locatícia</a>
+            <a href="calendario.html" class="px-4 py-3 rounded-md hover:bg-secondary transition-colors">Calendário</a>
+        </div>
+        <div class="p-4 mb-4 mt-auto">
+            <a href="login/index.html" class="block w-full text-center px-4 py-3 rounded-md hover:bg-secondary transition-colors text-white font-medium">Sair</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 md:ml-64 bg-bglight min-h-screen rounded-tl-3xl rounded-bl-3xl flex items-center justify-center p-4 relative">
+        
+        <a href="kanban.html" class="absolute top-6 right-8 text-primary font-bold hover:underline hidden md:block">Sair / Voltar</a>
+
+        <div class="bg-white rounded-2xl shadow-lg w-full max-w-[450px] p-8 box-border mt-4 md:mt-0">
+            <h2 class="text-2xl font-bold text-primary text-center mb-6">Nova Proposta</h2>
+
+            <form id="form-proposta" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-600 mb-1">Nome da Imobiliária</label>
+                    <input type="text" id="nomeImobiliaria" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-sm" placeholder="Ex: Imobiliária Central" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-600 mb-1">Nome do Inquilino</label>
+                    <input type="text" id="nomeInquilino" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-sm" placeholder="Ex: João da Silva" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-600 mb-1">Valor do Aluguel</label>
+                    <input type="number" id="valorAluguel" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-sm" placeholder="Ex: 2500.00" step="0.01" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-600 mb-1">Data de Vencimento</label>
+                    <input type="date" id="dataVencimento" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-sm" required>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-button hover:bg-[#4c1d95] text-white font-bold py-3 px-4 rounded-lg transition-colors text-sm">
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+
+        document.getElementById('form-proposta').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const nomeImobiliaria = document.getElementById('nomeImobiliaria').value.trim();
+            const nomeInquilino = document.getElementById('nomeInquilino').value.trim();
+            const valorAluguel = document.getElementById('valorAluguel').value;
+            const dataVencimento = document.getElementById('dataVencimento').value;
+
+            if (!nomeImobiliaria || !nomeInquilino || !valorAluguel || !dataVencimento) {
+                alert("⚠️ Por favor, preencha todos os campos antes de salvar!");
+                return;
+            }
+
+            const dadosProposta = {
+                nomeImobiliaria, nomeInquilino,
+                valorAluguel: parseFloat(valorAluguel),
+                dataVencimento, statusKanban: "A Fazer"
+            };
+
+            try {
+                const resposta = await fetch('/api/propostas', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dadosProposta)
+                });
+
+                if (resposta.ok || resposta.status === 201) {
+                    alert("Proposta cadastrada com sucesso!");
+                    window.location.href = "kanban.html";
+                } else {
+                    alert("Ops! Alguma coisa deu errado no servidor.");
+                }
+            } catch (erro) {
+                console.error("Erro de conexão: ", erro);
+                alert("Modo Mock: Proposta enviada!");
+                window.location.href = "kanban.html";
+            }
+        });
+    </script>
+</body>
 </html>
