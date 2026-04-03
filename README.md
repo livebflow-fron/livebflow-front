@@ -30,5 +30,9 @@ Para testes e demonstrações do painel, utilize as seguintes credenciais padrã
 
 *(Nota: Na versão atual de protótipo de frontend, a tela de login já redireciona automaticamente para o painel principal independentemente da senha informada, facilitando a apresentação.)*
 
-## ⚙️ Como executar este projeto
-Como este repositório contém apenas arquivos estáticos (Front-end), basta clonar o repositório e abrir o arquivo `index.html` raiz ou o `painel/login/index.html` em qualquer navegador web.
+## 🌐 Acesso ao Sistema (VPS Online)
+O projeto encontra-se publicado e disponível online para avaliação e uso.
+Basta acessar o link: **[https://liveb.x7q-prt99.cloud/](https://liveb.x7q-prt99.cloud/)**
+
+## ⚙️ Uso Local (Opcional)
+Caso queira testar os arquivos localmente, basta clonar o repositório e abrir o arquivo `index.html` principal ou o `painel/login/index.html` em seu navegador.
