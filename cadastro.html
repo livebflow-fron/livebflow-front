@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Liveb Bank S/A - Aluguel sem burocracia, fácil e garantido">
-    <title>Liveb Bank - Aluguel sem burocracia, fácil e garantido</title>
+    <title>Liveb Bank S/A - Aluguel sem burocracia, fácil e garantido</title>
 
     <!-- Favicon -->
     <link rel="icon" href="https://www.livebbank.com.br/static/images/favicon.ico" type="image/x-icon">
@@ -49,32 +49,36 @@
         <div class="container mx-auto px-4">
             <!-- Logo -->
             <div class="flex-1">
-                <a href="index.html" class="flex items-center">
-                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10">
+                <a href="painel-interno.html" class="flex items-center gap-3">
+                    <img src="static/images/liveb-logo-azul.svg" alt="Liveb Bank S/A" class="h-10">
+                    <span class="font-bold text-slate-700 text-xl border-l-2 border-slate-200 pl-3">LivebFlow</span>
                 </a>
             </div>
 
             <!-- Desktop Menu -->
             <div class="hidden lg:flex flex-none">
                 <ul class="menu menu-horizontal px-1 gap-1">
-                    <li><a href="index.html#como-funciona" class="font-medium">Como Funciona</a></li>
-                    <li><a href="index.html#analise" class="font-medium">Análise Instantânea</a></li>
-                    <li><a href="index.html#planos" class="font-medium">Planos</a></li>
-                    <li><a href="index.html#contato" class="font-medium">Contato</a></li>
+                    <li><a href="painel-interno.html" class="font-medium text-slate-600">Dashboard</a></li>
+                    <li><a href="calendario.html" class="font-medium text-slate-600">Calendário</a></li>
+                    <li><a href="cadastro.html" class="font-medium text-primary">Nova Imobiliária</a></li>
+                    <li><a href="nova-fianca.html" class="font-medium text-slate-600">Nova Fiança</a></li>
                 </ul>
             </div>
 
-            <!-- CTA Buttons -->
+            <!-- CTA Buttons / User Profile -->
             <div class="hidden lg:flex items-center gap-3 ml-4">
-                <a href="tel:08004840001" class="flex items-center gap-2 text-sm font-semibold">
-                    <i class="bi bi-telephone"></i>
-                    0800 484 0001
-                </a>
-                <a href="painel/login/index.html" class="btn btn-outline btn-primary btn-sm">
-                    <i class="bi bi-box-arrow-in-right"></i> Entrar
-                </a>
-                <a href="seja-parceiro/index.html" class="btn btn-primary btn-sm">
-                    Seja Parceiro
+                <div class="flex flex-col text-right mr-2">
+                    <span class="text-sm font-bold text-slate-800">Administrador</span>
+                    <span class="text-xs text-slate-500">Liveb Bank S/A</span>
+                </div>
+                <div class="avatar placeholder">
+                  <div class="bg-blue-100 text-primary rounded-full w-10">
+                    <span class="font-semibold">AD</span>
+                  </div>
+                </div>
+                <!-- Sair Button -->
+                <a href="painel/login/index.html" class="btn btn-outline btn-error btn-sm ml-2">
+                    <i class="bi bi-box-arrow-right"></i> Sair
                 </a>
             </div>
 
@@ -93,12 +97,12 @@
         <div class="drawer-side z-50">
             <label for="mobile-drawer" class="drawer-overlay"></label>
             <ul class="menu p-4 w-80 min-h-full bg-base-100">
-                <li><a href="index.html#como-funciona">Como Funciona</a></li>
-                <li><a href="index.html#analise">Análise Instantânea</a></li>
-                <li><a href="index.html#planos">Planos</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="painel-interno.html">Dashboard</a></li>
+                <li><a href="calendario.html">Calendário</a></li>
+                <li><a href="cadastro.html" class="text-primary font-bold">Nova Imobiliária</a></li>
+                <li><a href="nova-fianca.html">Nova Fiança</a></li>
                 <li class="mt-4">
-                    <a href="seja-parceiro/index.html" class="btn btn-primary">Seja Parceiro</a>
+                    <a href="painel/login/index.html" class="btn btn-error btn-outline mt-auto">Sair</a>
                 </li>
             </ul>
         </div>
@@ -159,7 +163,7 @@
 
                         <!-- Botão -->
                         <div class="flex justify-end gap-3">
-                            <button type="reset" class="btn btn-ghost text-slate-500">Cancelar</button>
+                            <a href="index.html" class="btn btn-ghost text-slate-500">Cancelar</a>
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-floppy mr-2"></i>
                                 Salvar Cadastro
@@ -172,12 +176,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-300 py-12">
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Brand -->
                 <div>
-                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10 brightness-0 invert mb-4">
+                    <img src="static/images/liveb-logo-branco.svg" alt="Liveb Bank S/A" class="h-10 mb-4">
                     <p class="text-slate-400 text-sm mb-4">Transformando o futuro da locação com inovação, confiança e rapidez.</p>
                     <p class="text-slate-500 text-xs">Liveb Bank S/A</p>
                     <p class="text-slate-500 text-xs">CNPJ: 42.206.486/0001-69</p>
@@ -185,30 +189,26 @@
 
                 <!-- Navigation -->
                 <div>
-                    <h6 class="font-semibold text-white mb-4">Navegação</h6>
+                    <h6 class="font-semibold text-white mb-4">Navegação Interna</h6>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="index.html#como-funciona" class="hover:text-white transition">Como Funciona</a></li>
-                        <li><a href="index.html#analise" class="hover:text-white transition">Análise Instantânea</a></li>
-                        <li><a href="index.html#planos" class="hover:text-white transition">Planos</a></li>
-                        <li><a href="index.html#contato" class="hover:text-white transition">Contato</a></li>
+                        <li><a href="painel-interno.html" class="hover:text-white transition">Dashboard</a></li>
+                        <li><a href="calendario.html" class="hover:text-white transition">Calendário</a></li>
+                        <li><a href="cadastro.html" class="hover:text-white transition text-primary">Nova Imobiliária</a></li>
+                        <li><a href="nova-fianca.html" class="hover:text-white transition">Nova Fiança</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
                 <div>
-                    <h6 class="font-semibold text-white mb-4">Contato</h6>
+                    <h6 class="font-semibold text-white mb-4">Suporte ao Colaborador</h6>
                     <ul class="space-y-3 text-sm">
-                        <li class="flex gap-2">
-                            <i class="bi bi-geo-alt mt-1"></i>
-                            <span>Avenida Brigadeiro Faria Lima, 1811<br>Jardim Paulistano, São Paulo/SP<br>CEP: 01452-001</span>
+                        <li class="flex gap-2 items-center">
+                            <i class="bi bi-envelope"></i>
+                            suporte@livebbank.com.br
                         </li>
-                        <li class="flex gap-2">
+                        <li class="flex gap-2 items-center">
                             <i class="bi bi-telephone"></i>
-                            0800 484 0001
-                        </li>
-                        <li class="flex gap-2">
-                            <i class="bi bi-phone"></i>
-                            +55 11 99015-0375
+                            Ramal: 4001
                         </li>
                     </ul>
                 </div>
@@ -217,7 +217,7 @@
             <div class="divider before:bg-slate-700 after:bg-slate-700 my-8"></div>
 
             <div class="text-center text-slate-500 text-sm">
-                &copy; 2026 Liveb Bank – Todos os direitos reservados.
+                &copy; 2026 Liveb Bank S/A – Todos os direitos reservados.
             </div>
         </div>
     </footer>
@@ -272,7 +272,7 @@
             };
 
             try {
-                const response = await fetch('http://localhost:8080/api/imobiliarias', {
+                const response = await fetch('/api/imobiliarias', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nova Fiança - LivebFlow">
+    <title>Nova Fiança - LivebFlow</title>
+
+    <link rel="icon" href="https://www.livebbank.com.br/static/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { primary: '#0d6efd', 'primary-dark': '#0a58ca', }
+                }
+            }
+        }
+    </script>
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50">
+    <!-- Navbar -->
+    <nav class="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex-1">
+                <a href="painel-interno.html" class="flex items-center gap-3">
+                    <img src="static/images/liveb-logo-azul.svg" alt="Liveb Bank S/A" class="h-10" onerror="this.src='https://www.livebbank.com.br/static/images/liveb-logo-azul.svg'">
+                    <span class="font-bold text-slate-700 text-xl border-l-2 border-slate-200 pl-3">LivebFlow</span>
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex flex-none">
+                <ul class="menu menu-horizontal px-1 gap-1">
+                    <li><a href="painel-interno.html" class="font-medium text-slate-600">Dashboard</a></li>
+                    <li><a href="calendario.html" class="font-medium text-slate-600">Calendário</a></li>
+                    <li><a href="cadastro.html" class="font-medium text-slate-600">Nova Imobiliária</a></li>
+                    <li><a href="#" class="font-bold text-primary bg-blue-50">Nova Fiança</a></li>
+                </ul>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-3 ml-4">
+                <div class="flex flex-col text-right mr-2">
+                    <span class="text-sm font-bold text-slate-800">Administrador</span>
+                    <span class="text-xs text-slate-500">Liveb Bank S/A</span>
+                </div>
+                <div class="avatar placeholder">
+                  <div class="bg-blue-100 text-primary rounded-full w-10"><span class="font-semibold">AD</span></div>
+                </div>
+                <a href="painel/login/index.html" class="btn btn-outline btn-error btn-sm ml-2"><i class="bi bi-box-arrow-right"></i> Sair</a>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="flex-none lg:hidden">
+                <label for="mobile-drawer" class="btn btn-square btn-ghost"><i class="bi bi-list text-2xl"></i></label>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Drawer -->
+    <div class="drawer drawer-end lg:hidden">
+        <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-side z-50">
+            <label for="mobile-drawer" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-80 min-h-full bg-base-100">
+                <li><a href="painel-interno.html">Dashboard</a></li>
+                <li><a href="calendario.html">Calendário</a></li>
+                <li><a href="cadastro.html">Nova Imobiliária</a></li>
+                <li><a href="#" class="text-primary font-bold">Nova Fiança</a></li>
+                <li class="mt-4"><a href="painel/login/index.html" class="btn btn-error btn-outline mt-auto">Sair</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <div class="py-8">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-slate-800">Nova Fiança Locatícia</h1>
+                        <p class="text-slate-500 mt-1">Preencha os dados do locatário para análise imediata.</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form onsubmit="event.preventDefault(); window.location.href='painel-interno.html';" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            
+                            <!-- Coluna Esquerda: Locatário -->
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-2 border-b border-slate-100 pb-2 mb-4">
+                                    <i class="bi bi-person-badge text-primary text-xl"></i>
+                                    <h3 class="text-lg font-bold text-slate-700">Dados do Locatário</h3>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Nome Completo</label>
+                                    <input type="text" placeholder="Ex: João da Silva" class="input input-bordered w-full" required>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1">CPF</label>
+                                        <input type="text" placeholder="000.000.000-00" class="input input-bordered w-full" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1">Data Nascimento</label>
+                                        <input type="date" class="input input-bordered w-full" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Cônjuge / Coparticipante (Opcional)</label>
+                                    <input type="text" placeholder="Nome do Cônjuge se houver" class="input input-bordered w-full">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Renda Mensal Comprovada Bruta</label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">R$</span>
+                                        <input type="text" placeholder="0,00" class="input input-bordered w-full pl-10" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Coluna Direita: Locação -->
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-2 border-b border-slate-100 pb-2 mb-4">
+                                    <i class="bi bi-house-door text-primary text-xl"></i>
+                                    <h3 class="text-lg font-bold text-slate-700">Dados da Locação</h3>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Imobiliária Solicitante</label>
+                                    <select class="select select-bordered w-full text-slate-600">
+                                        <option>Imobiliária Central SP</option>
+                                        <option>Lupa Imóveis</option>
+                                        <option>Casa Nova Consultoria</option>
+                                        <option>Prime Imóveis</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Valor do Aluguel</label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">R$</span>
+                                        <input type="text" placeholder="0,00" class="input input-bordered w-full pl-10 focus:border-primary" required>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1 text-xs">Condomínio (Opcional)</label>
+                                        <input type="text" placeholder="R$ 0,00" class="input input-sm input-bordered w-full">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1 text-xs">IPTU (Opcional)</label>
+                                        <input type="text" placeholder="R$ 0,00" class="input input-sm input-bordered w-full">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Plano Desejado</label>
+                                    <select class="select select-bordered w-full focus:ring-1 focus:ring-primary focus:border-primary">
+                                        <option>Gold (Garante 45x o Aluguel)</option>
+                                        <option>Silver (Garante 40x o Aluguel)</option>
+                                        <option>Diamond (Garante 60x o Aluguel)</option>
+                                        <option>Black (Garante 50x o Aluguel)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-6 border-t border-slate-200 flex justify-end gap-3">
+                        <a href="painel-interno.html" class="btn btn-ghost text-slate-500">Cancelar</a>
+                        <button type="submit" class="btn btn-primary px-8">
+                            <i class="bi bi-robot mr-2"></i> Iniciar Análise Instantânea
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <img src="static/images/liveb-logo-branco.svg" alt="Liveb Bank S/A" class="h-10 mb-4" onerror="this.src='https://www.livebbank.com.br/static/images/liveb-logo-branco.svg'">
+                    <p class="text-slate-400 text-sm mb-4">Transformando o futuro da locação com inovação, confiança e rapidez.</p>
+                    <p class="text-slate-500 text-xs">Liveb Bank S/A - CNPJ: 42.206.486/0001-69</p>
+                </div>
+                <div>
+                    <h6 class="font-semibold text-white mb-4">Navegação Interna</h6>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="painel-interno.html" class="hover:text-white transition">Dashboard</a></li>
+                        <li><a href="calendario.html" class="hover:text-white transition">Calendário</a></li>
+                        <li><a href="cadastro.html" class="hover:text-white transition">Nova Imobiliária</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nova Fiança</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-semibold text-white mb-4">Suporte ao Colaborador</h6>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex gap-2 items-center"><i class="bi bi-envelope"></i> suporte@livebbank.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="divider before:bg-slate-700 after:bg-slate-700 my-8"></div>
+            <div class="text-center text-slate-500 text-sm">&copy; 2026 Liveb Bank S/A</div>
+        </div>
+    </footer>
+</body>
+</html>

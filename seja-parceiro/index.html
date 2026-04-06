@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Liveb Bank S/A - Aluguel sem burocracia, fácil e garantido">
-    <title>Seja Parceiro - Liveb Bank</title>
+    <title>Seja Parceiro - Liveb Bank S/A</title>
 
     <!-- Favicon -->
     <link rel="icon" href="https://www.livebbank.com.br/static/images/favicon.ico" type="image/x-icon">
@@ -69,7 +69,7 @@
             <!-- Logo -->
             <div class="flex-1">
                 <a href="../index.html" class="flex items-center">
-                    <img src="../static/images/liveb-logo.png" alt="Liveb Bank" class="h-10">
+                    <img src="../static/images/liveb-logo-azul.svg" alt="Liveb Bank S/A" class="h-10">
                 </a>
             </div>
 
@@ -138,9 +138,14 @@
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-xl mx-auto">
             <!-- Logo -->
-            <div class="flex justify-center mb-8">
+            <!--<div class="flex justify-center mb-8">
                 <div class="w-28 h-28 bg-slate-800 rounded-3xl flex items-center justify-center p-5">
-                    <img src="https://www.livebbank.com.br/media/liveb-logo-BIpbA_qK.png" alt="Liveb" class="w-full brightness-0 invert">
+                    <img src="https://www.livebbank.com.br/media/liveb-logo-BIpbA_qK.svg" alt="Liveb" class="w-full brightness-0 invert">
+                </div>
+            </div>-->
+            <div class="flex justify-center mb-8">
+                <div class="w-28 h-28 bg-white shadow-md border border-gray-100 rounded-3xl flex items-center justify-center p-5">
+                    <img src="../static/images/liveb-logo-azul.svg" alt="Liveb" class="w-full">
                 </div>
             </div>
 
@@ -149,9 +154,9 @@
                 <button type="button" class="tab-btn flex-1 py-3 px-6 rounded-md font-medium text-gray-500 transition-all bg-white text-gray-800 shadow-md active" data-tab="imobiliaria">
                     Imobiliária
                 </button>
-                <button type="button" class="tab-btn flex-1 py-3 px-6 rounded-md font-medium text-gray-500 transition-all " data-tab="corretor">
+                <!--<button type="button" class="tab-btn flex-1 py-3 px-6 rounded-md font-medium text-gray-500 transition-all " data-tab="corretor">
                     Corretor Autônomo
-                </button>
+                </button>-->
             </div>
 
             <!-- Tab: Imobiliária -->
@@ -305,135 +310,7 @@
                 </form>
             </div>
 
-            <!-- Tab: Corretor Autônomo -->
-            <div class="tab-content hidden" id="tab-corretor">
-                <form method="post" enctype="multipart/form-data" class="space-y-6">
-                    <input type="hidden" name="csrfmiddlewaretoken" value="qAh1kYGlI0sAwk0UEvXxruyXRPvnzEAM5cuM2trKGuR1qQi02k1TZki9sINY3TXg">
-
-                    
-
-                    <!-- Dados Pessoais -->
-                    <div class="space-y-4">
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">Nome Completo *</span>
-                            </label>
-                            <input type="text" name="corretor-nome" class="input input-bordered w-full" placeholder="Seu nome completo" maxlength="200" required id="id_corretor-nome">
-                        </div>
-
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">CPF *</span>
-                            </label>
-                            <input type="text" name="corretor-cpf" class="input input-bordered w-full" placeholder="000.000.000-00" data-mask="000.000.000-00" maxlength="14" required id="id_corretor-cpf">
-                        </div>
-
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">CRECI *</span>
-                            </label>
-                            <input type="text" name="corretor-creci" class="input input-bordered w-full" placeholder="Número do CRECI" maxlength="20" required id="id_corretor-creci">
-                        </div>
-                    </div>
-
-                    <!-- Contato -->
-                    <div class="space-y-4">
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">E-mail *</span>
-                            </label>
-                            <input type="email" name="corretor-email" class="input input-bordered w-full" placeholder="seu@email.com.br" maxlength="254" required id="id_corretor-email">
-                        </div>
-
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">
-                                    <i class="bi bi-telephone mr-2"></i>Telefone *
-                                </span>
-                            </label>
-                            <input type="text" name="corretor-telefone" class="input input-bordered w-full" placeholder="(00) 0000-0000" data-mask="(00) 0000-0000" maxlength="20" required id="id_corretor-telefone">
-                        </div>
-
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">
-                                    <i class="bi bi-whatsapp mr-2"></i>WhatsApp *
-                                </span>
-                            </label>
-                            <input type="text" name="corretor-whatsapp" class="input input-bordered w-full" placeholder="(00) 00000-0000" data-mask="(00) 00000-0000" maxlength="20" required id="id_corretor-whatsapp">
-                        </div>
-                    </div>
-
-                    <!-- Endereço -->
-                    <div class="space-y-4">
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">CEP *</span>
-                            </label>
-                            <input type="text" name="corretor-cep" class="input input-bordered w-full" placeholder="00000-000" data-mask="00000-000" id="cep-corretor" maxlength="9" required>
-                        </div>
-
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">Endereço *</span>
-                            </label>
-                            <input type="text" name="corretor-endereco" class="input input-bordered w-full" placeholder="Rua, Avenida..." id="endereco-corretor" maxlength="300" required>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text font-medium">Número *</span>
-                                </label>
-                                <input type="text" name="corretor-numero" class="input input-bordered w-full" placeholder="Número" maxlength="20" required id="id_corretor-numero">
-                            </div>
-                            <div class="form-control col-span-2">
-                                <label class="label">
-                                    <span class="label-text font-medium">Complemento *</span>
-                                </label>
-                                <input type="text" name="corretor-complemento" class="input input-bordered w-full" placeholder="Apto, Sala... (opcional)" maxlength="100" required id="id_corretor-complemento">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Arquivos -->
-                    <div class="space-y-4">
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">Foto documento CRECI *</span>
-                            </label>
-                            <input type="file" name="corretor-documentos" class="file-input file-input-bordered w-full" accept=".jpg,.jpeg,.png,.pdf" required id="id_corretor-documentos">
-                            <label class="label">
-                                <span class="label-text-alt text-gray-500">Formatos aceitos: JPG, PNG, PDF</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Senha -->
-                    <div class="space-y-4">
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">Senha *</span>
-                            </label>
-                            <input type="password" name="corretor-password" class="input input-bordered w-full" placeholder="Digite sua senha" required id="id_corretor-password">
-                        </div>
-
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text font-medium">Confirmar Senha *</span>
-                            </label>
-                            <input type="password" name="corretor-confirm_password" class="input input-bordered w-full" placeholder="Confirme sua senha" required id="id_corretor-confirm_password">
-                        </div>
-                    </div>
-
-                    <!-- Submit -->
-                    <div class="text-center pt-4">
-                        <button type="submit" class="btn btn-info btn-lg px-12 text-white">
-                            Cadastrar
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <!-- Tab: Corretor Autônomo removida por solicitação -->
 
         </div>
     </div>
@@ -447,7 +324,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Brand -->
                 <div>
-                    <img src="../static/images/liveb-logo.png" alt="Liveb Bank" class="h-10 brightness-0 invert mb-4">
+                    <img src="../static/images/liveb-logo-branco.svg" alt="Liveb Bank S/A" class="h-10 mb-4">
                     <p class="text-slate-400 text-sm mb-4">Transformando o futuro da locação com inovação, confiança e rapidez.</p>
                     <p class="text-slate-500 text-xs">Liveb Bank S/A</p>
                     <p class="text-slate-500 text-xs">CNPJ: 42.206.486/0001-69</p>
@@ -487,7 +364,7 @@
             <div class="divider before:bg-slate-700 after:bg-slate-700 my-8"></div>
 
             <div class="text-center text-slate-500 text-sm">
-                &copy; 2026 Liveb Bank – Todos os direitos reservados.
+                &copy; 2026 Liveb Bank S/A – Todos os direitos reservados.
             </div>
         </div>
     </footer>
@@ -541,24 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // CEP auto-complete for Corretor
-    const cepCorretor = document.getElementById('id_corretor-cep');
-    if (cepCorretor) {
-        cepCorretor.addEventListener('blur', function() {
-            const cep = this.value.replace(/\D/g, '');
-            if (cep.length === 8) {
-                fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.erro) {
-                            document.getElementById('id_corretor-endereco').value = data.logradouro;
-                        }
-                    });
-            }
-        });
-    }
-
-    // Input masks
+    // Aplicar máscaras
     function applyMask(input, mask) {
         input.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
