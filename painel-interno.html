@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LivebFlow - Painel de Gestão Liveb Bank S/A">
+    <meta name="description" content="LivebFlow - Painel de Gestão Liveb Bank">
     <title>LivebFlow - Painel de Gestão</title>
 
     <!-- Favicon -->
@@ -18,8 +18,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -58,7 +58,7 @@
             <!-- Logo -->
             <div class="flex-1">
                 <a href="#" class="flex items-center gap-3">
-                    <img src="static/images/liveb-logo-azul.svg" alt="Liveb Bank S/A" class="h-10">
+                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10">
                     <span class="font-bold text-slate-700 text-xl border-l-2 border-slate-200 pl-3">LivebFlow</span>
                 </a>
             </div>
@@ -67,9 +67,8 @@
             <div class="hidden lg:flex flex-none">
                 <ul class="menu menu-horizontal px-1 gap-1">
                     <li><a href="#" class="font-medium text-primary">Dashboard</a></li>
-                    <li><a href="calendario.html" class="font-medium">Calendário</a></li>
                     <li><a href="cadastro.html" class="font-medium">Nova Imobiliária</a></li>
-                    <li><a href="nova-fianca.html" class="font-medium">Nova Fiança</a></li>
+                    <li><a href="#" class="font-medium">Nova Fiança</a></li>
                 </ul>
             </div>
 
@@ -106,9 +105,8 @@
             <label for="mobile-drawer" class="drawer-overlay"></label>
             <ul class="menu p-4 w-80 min-h-full bg-base-100">
                 <li><a href="#" class="text-primary font-bold">Dashboard</a></li>
-                <li><a href="calendario.html">Calendário</a></li>
                 <li><a href="cadastro.html">Nova Imobiliária</a></li>
-                <li><a href="nova-fianca.html">Nova Fiança</a></li>
+                <li><a href="#">Nova Fiança</a></li>
                 <li class="mt-4">
                     <button onclick="logout()" class="btn btn-error btn-outline mt-auto w-full">Sair</button>
                 </li>
@@ -127,25 +125,15 @@
                         <p class="text-slate-500 text-sm sm:text-base">Gerencie as fianças locatícias ativas no sistema</p>
                     </div>
                     <div class="flex gap-2">
-                        <a href="nova-fianca.html" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Nova Fiança</a>
+                        <button class="btn btn-primary"><i class="bi bi-plus-lg"></i> Nova Fiança</button>
                     </div>
                 </div>
 
-                <!-- Tabs -->
-                <div role="tablist" class="tabs tabs-boxed mb-8 inline-flex bg-slate-200/50 p-1 rounded-lg">
-                    <button role="tab" class="tab tab-active font-medium px-6 py-1 h-auto min-h-[2.5rem] rounded-md transition-all text-primary !bg-white shadow-sm" onclick="switchTab('esteira', this)">
-                        <i class="bi bi-layers mr-2"></i> Contratos Ativos
-                    </button>
-                    <button role="tab" class="tab font-medium px-6 py-1 h-auto min-h-[2.5rem] rounded-md transition-all text-slate-500 hover:text-primary" onclick="switchTab('projeto', this)">
-                        <i class="bi bi-list-check mr-2"></i> Minhas Tarefas
-                    </button>
-                </div>
-
-                <!-- Quadro Kanban 1 (Esteira) -->
-                <div id="esteira-tab" class="flex flex-col lg:flex-row gap-6 items-start overflow-x-auto pb-4">
+                <!-- Quadro Kanban -->
+                <div class="flex flex-col lg:flex-row gap-6 items-start overflow-x-auto pb-4">
                     
                     <!-- Coluna 1: Pendência de Docs -->
-                    <div id="col-1" class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
+                    <div class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="font-bold text-slate-700 flex items-center gap-2">
                                 <i class="bi bi-file-earmark-text text-amber-500"></i> Pendência de Docs
@@ -207,7 +195,7 @@
                     </div>
 
                     <!-- Coluna 2: Análise de Crédito -->
-                    <div id="col-2" class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
+                    <div class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="font-bold text-slate-700 flex items-center gap-2">
                                 <i class="bi bi-search text-blue-500"></i> Análise de Crédito
@@ -243,7 +231,7 @@
                     </div>
 
                     <!-- Coluna 3: Fiança Emitida -->
-                    <div id="col-3" class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
+                    <div class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="font-bold text-slate-700 flex items-center gap-2">
                                 <i class="bi bi-award-fill text-emerald-500"></i> Fiança Emitida
@@ -305,136 +293,6 @@
 
                     </div>
                 </div>
-
-                <!-- Quadro de Tarefas -->
-                <div id="projeto-tab" class="hidden flex-col lg:flex-row gap-6 items-start overflow-x-auto pb-4 w-full">
-                    
-                    <!-- Coluna A Fazer -->
-                    <div id="col-4" class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-slate-700 flex items-center gap-2">
-                                <i class="bi bi-circle text-slate-400"></i> A Fazer
-                            </h3>
-                            <span class="badge badge-sm bg-slate-300 text-slate-700 font-semibold border-none">2</span>
-                        </div>
-                        
-                        <div class="card bg-base-100 shadow-sm border border-slate-200 hover:shadow-md cursor-pointer transition-shadow">
-                            <div class="card-body p-4">
-                                <div class="flex justify-between items-start mb-2">
-                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">TSK-1042</span>
-                                    <span class="badge badge-error badge-sm text-xs text-white border-none">Alta</span>
-                                </div>
-                                <h4 class="font-bold text-sm text-slate-800">Revisar documentação pendente</h4>
-                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Imobiliária X - João Silva</p>
-                                
-                                <div class="flex items-center justify-between mt-1">
-                                    <div class="avatar-group -space-x-2 rtl:space-x-reverse">
-                                      <div class="avatar placeholder">
-                                        <div class="bg-blue-100 text-primary rounded-full w-6">
-                                          <span class="text-[10px] font-semibold">AD</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="text-xs text-slate-400 flex items-center gap-1">
-                                        <i class="bi bi-clock"></i> Hoje, 14:00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card bg-base-100 shadow-sm border border-slate-200 hover:shadow-md cursor-pointer transition-shadow">
-                            <div class="card-body p-4">
-                                <div class="flex justify-between items-start mb-2">
-                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">TSK-1045</span>
-                                    <span class="badge badge-info badge-sm text-xs text-white border-none">Normal</span>
-                                </div>
-                                <h4 class="font-bold text-sm text-slate-800">Contatar cliente para assinatura</h4>
-                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Lupa Imóveis - Maria Souza</p>
-                                
-                                <div class="flex items-center justify-between mt-1">
-                                    <div class="avatar-group -space-x-2 rtl:space-x-reverse">
-                                      <div class="avatar placeholder">
-                                        <div class="bg-blue-100 text-primary rounded-full w-6">
-                                          <span class="text-[10px] font-semibold">AD</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="text-xs text-slate-400 flex items-center gap-1">
-                                        <i class="bi bi-calendar"></i> Amanhã
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Coluna Em Andamento -->
-                    <div id="col-5" class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-slate-700 flex items-center gap-2">
-                                <i class="bi bi-arrow-repeat text-blue-500"></i> Em Andamento
-                            </h3>
-                            <span class="badge badge-sm bg-slate-300 text-slate-700 font-semibold border-none">1</span>
-                        </div>
-                        
-                        <div class="card bg-base-100 shadow-sm border border-slate-200 border-l-4 border-l-blue-500 hover:shadow-md cursor-pointer transition-shadow">
-                            <div class="card-body p-4">
-                                <div class="flex justify-between items-start mb-2">
-                                    <span class="badge badge-ghost badge-sm text-xs font-semibold">TSK-1038</span>
-                                    <span class="badge badge-warning badge-sm text-xs text-white border-none">Média</span>
-                                </div>
-                                <h4 class="font-bold text-sm text-slate-800">Análise de crédito manual</h4>
-                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Prime Imóveis - Pedro Alves</p>
-                                
-                                <div class="flex items-center justify-between mt-1">
-                                    <div class="avatar-group -space-x-2 rtl:space-x-reverse">
-                                      <div class="avatar placeholder">
-                                        <div class="bg-blue-100 text-primary rounded-full w-6">
-                                          <span class="text-[10px] font-semibold">AD</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="text-xs text-blue-500 flex items-center gap-1 font-medium">
-                                        <i class="bi bi-stopwatch"></i> Em progresso
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Coluna Concluído -->
-                    <div id="col-6" class="w-full lg:w-1/3 lg:min-w-[320px] bg-slate-200/50 rounded-xl p-4 min-h-[500px] flex flex-col gap-4 border border-slate-200">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-slate-700 flex items-center gap-2">
-                                <i class="bi bi-check-circle-fill text-emerald-500"></i> Concluído
-                            </h3>
-                            <span class="badge badge-sm bg-slate-300 text-slate-700 font-semibold border-none">1</span>
-                        </div>
-                        
-                        <div class="card bg-base-100 shadow-sm border border-slate-200 border-l-4 border-l-emerald-500 hover:shadow-md cursor-pointer transition-shadow opacity-75">
-                            <div class="card-body p-4">
-                                <div class="flex justify-between items-start mb-2">
-                                    <span class="badge badge-ghost badge-sm text-xs font-semibold line-through">TSK-1030</span>
-                                </div>
-                                <h4 class="font-bold text-sm text-slate-800 line-through">Emissão de certificado pendente</h4>
-                                <p class="text-xs text-slate-500 mb-3"><i class="bi bi-building"></i> Casa Nova Consultoria - Ana Costa</p>
-                                
-                                <div class="flex items-center justify-between mt-1">
-                                    <div class="avatar-group -space-x-2 rtl:space-x-reverse">
-                                      <div class="avatar placeholder">
-                                        <div class="bg-blue-100 text-primary rounded-full w-6">
-                                          <span class="text-[10px] font-semibold">AD</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="text-xs text-emerald-600 flex items-center gap-1 font-medium">
-                                        <i class="bi bi-check2-all"></i> Finalizado
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
     </main>
@@ -445,7 +303,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Brand -->
                 <div>
-                    <img src="static/images/liveb-logo-branco.svg" alt="Liveb Bank S/A" class="h-10 mb-4">
+                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10 brightness-0 invert mb-4">
                     <p class="text-slate-400 text-sm mb-4">Transformando o futuro da locação com inovação, confiança e rapidez.</p>
                     <p class="text-slate-500 text-xs">Liveb Bank S/A</p>
                     <p class="text-slate-500 text-xs">CNPJ: 42.206.486/0001-69</p>
@@ -456,9 +314,9 @@
                     <h6 class="font-semibold text-white mb-4">Navegação Interna</h6>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#" class="hover:text-white transition">Dashboard</a></li>
-                        <li><a href="calendario.html" class="hover:text-white transition">Calendário</a></li>
                         <li><a href="cadastro.html" class="hover:text-white transition">Nova Imobiliária</a></li>
-                        <li><a href="nova-fianca.html" class="hover:text-white transition">Nova Fiança</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nova Fiança</a></li>
+                        <li><a href="#" class="hover:text-white transition">Meus Dados</a></li>
                     </ul>
                 </div>
 
@@ -481,7 +339,7 @@
             <div class="divider before:bg-slate-700 after:bg-slate-700 my-8"></div>
 
             <div class="text-center text-slate-500 text-sm">
-                &copy; 2026 Liveb Bank S/A – Todos os direitos reservados.
+                &copy; 2026 Liveb Bank – Todos os direitos reservados.
             </div>
         </div>
     </footer>
@@ -503,74 +361,5 @@
         window.location.href = 'painel/login/index.html';
     }
 </script>
-    <!-- Scripts de Interatividade -->
-    <script>
-        // Funcionalidade das abas
-        function switchTab(tabName, btn) {
-            // Ocultar ambas as abas
-            document.getElementById('esteira-tab').classList.add('hidden');
-            document.getElementById('projeto-tab').classList.add('hidden');
-            
-            // Remover display flex antes para evitar conflito com hidden
-            document.getElementById('esteira-tab').classList.remove('flex');
-            document.getElementById('projeto-tab').classList.remove('flex');
-
-            // Resetar estilo dos botoes de aba
-            const tabs = document.querySelectorAll('button[role="tab"]');
-            tabs.forEach(t => {
-                t.classList.remove('tab-active', 'text-primary', '!bg-white', 'shadow-sm');
-                t.classList.add('text-slate-500');
-            });
-
-            // Aplicar estilo 'visto' ao botao clicado
-            btn.classList.remove('text-slate-500');
-            btn.classList.add('tab-active', 'text-primary', '!bg-white', 'shadow-sm');
-
-            // Mostrar a aba correspondente
-            if (tabName === 'esteira') {
-                document.getElementById('esteira-tab').classList.remove('hidden');
-                document.getElementById('esteira-tab').classList.add('flex');
-            } else {
-                document.getElementById('projeto-tab').classList.remove('hidden');
-                document.getElementById('projeto-tab').classList.add('flex');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar Sortablejs na Esteira (Aba 1)
-            var col1 = document.getElementById('col-1');
-            var col2 = document.getElementById('col-2');
-            var col3 = document.getElementById('col-3');
-
-            var optionsEsteira = {
-                group: 'esteira',
-                animation: 150,
-                draggable: '.card', // Somente arrasta os cards
-                ghostClass: 'opacity-50', // Efeito visual ao arrastar
-                dragClass: 'shadow-2xl'
-            };
-
-            if (col1) Sortable.create(col1, optionsEsteira);
-            if (col2) Sortable.create(col2, optionsEsteira);
-            if (col3) Sortable.create(col3, optionsEsteira);
-
-            // Inicializar Sortablejs no Projeto (Aba 2)
-            var col4 = document.getElementById('col-4');
-            var col5 = document.getElementById('col-5');
-            var col6 = document.getElementById('col-6');
-
-            var optionsProjeto = {
-                group: 'projeto',
-                animation: 150,
-                draggable: '.card',
-                ghostClass: 'opacity-50',
-                dragClass: 'shadow-2xl'
-            };
-
-            if (col4) Sortable.create(col4, optionsProjeto);
-            if (col5) Sortable.create(col5, optionsProjeto);
-            if (col6) Sortable.create(col6, optionsProjeto);
-        });
-    </script>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <title>Liveb Bank - Aluguel sem burocracia, fácil e garantido</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="https://www.livebbank.com.br/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,18 +50,18 @@
         <div class="container mx-auto px-4">
             <!-- Logo -->
             <div class="flex-1">
-                <a href="index.html" class="flex items-center">
-                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10">
+                <a href="/" class="flex items-center">
+                    <img src="/static/images/liveb-logo.png" alt="Liveb Bank" class="h-10">
                 </a>
             </div>
 
             <!-- Desktop Menu -->
             <div class="hidden lg:flex flex-none">
                 <ul class="menu menu-horizontal px-1 gap-1">
-                    <li><a href="index.html#como-funciona" class="font-medium">Como Funciona</a></li>
-                    <li><a href="index.html#analise" class="font-medium">Análise Instantânea</a></li>
-                    <li><a href="index.html#planos" class="font-medium">Planos</a></li>
-                    <li><a href="index.html#contato" class="font-medium">Contato</a></li>
+                    <li><a href="#como-funciona" class="font-medium">Como Funciona</a></li>
+                    <li><a href="#analise" class="font-medium">Análise Instantânea</a></li>
+                    <li><a href="#planos" class="font-medium">Planos</a></li>
+                    <li><a href="#contato" class="font-medium">Contato</a></li>
                 </ul>
             </div>
 
@@ -71,10 +71,10 @@
                     <i class="bi bi-telephone"></i>
                     0800 484 0001
                 </a>
-                <a href="painel/login/index.html" class="btn btn-outline btn-primary btn-sm">
+                <a href="/painel/login/" class="btn btn-outline btn-primary btn-sm">
                     <i class="bi bi-box-arrow-in-right"></i> Entrar
                 </a>
-                <a href="seja-parceiro/index.html" class="btn btn-primary btn-sm">
+                <a href="/seja-parceiro/" class="btn btn-primary btn-sm">
                     Seja Parceiro
                 </a>
             </div>
@@ -94,12 +94,12 @@
         <div class="drawer-side z-50">
             <label for="mobile-drawer" class="drawer-overlay"></label>
             <ul class="menu p-4 w-80 min-h-full bg-base-100">
-                <li><a href="index.html#como-funciona">Como Funciona</a></li>
-                <li><a href="index.html#analise">Análise Instantânea</a></li>
-                <li><a href="index.html#planos">Planos</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#analise">Análise Instantânea</a></li>
+                <li><a href="#planos">Planos</a></li>
+                <li><a href="#contato">Contato</a></li>
                 <li class="mt-4">
-                    <a href="seja-parceiro/index.html" class="btn btn-primary">Seja Parceiro</a>
+                    <a href="/seja-parceiro/" class="btn btn-primary">Seja Parceiro</a>
                 </li>
             </ul>
         </div>
@@ -137,10 +137,10 @@
                     </li>
                 </ul>
                 <div class="flex flex-wrap gap-4">
-                    <a href="seja-parceiro/index.html" class="btn btn-primary btn-lg">
+                    <a href="/seja-parceiro/" class="btn btn-primary btn-lg">
                         Seja nosso Parceiro <i class="bi bi-arrow-right ml-2"></i>
                     </a>
-                    <a href="index.html#como-funciona" class="btn btn-outline btn-lg">
+                    <a href="#como-funciona" class="btn btn-outline btn-lg">
                         Saiba Mais
                     </a>
                 </div>
@@ -148,7 +148,7 @@
 
             <!-- Image -->
             <div class="relative">
-                <img src="static/images/hero-image.jpg" alt="Casal com chaves" class="rounded-2xl shadow-2xl w-full">
+                <img src="/static/images/hero-image.jpg" alt="Casal com chaves" class="rounded-2xl shadow-2xl w-full">
                 <!-- Stats Badge -->
                 <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 flex items-center gap-4">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -324,7 +324,7 @@
 
         <div class="text-center mt-12">
             <p class="text-primary font-semibold mb-4">Liveb Bank S/A – Transformando o futuro da locação com inovação, confiança e rapidez.</p>
-            <a href="index.html#" class="btn btn-primary btn-lg">Solicitar Análise</a>
+            <a href="#" class="btn btn-primary btn-lg">Solicitar Análise</a>
         </div>
     </div>
 </section>
@@ -499,7 +499,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Brand -->
                 <div>
-                    <img src="static/images/liveb-logo.png" alt="Liveb Bank" class="h-10 brightness-0 invert mb-4">
+                    <img src="/static/images/liveb-logo.png" alt="Liveb Bank" class="h-10 brightness-0 invert mb-4">
                     <p class="text-slate-400 text-sm mb-4">Transformando o futuro da locação com inovação, confiança e rapidez.</p>
                     <p class="text-slate-500 text-xs">Liveb Bank S/A</p>
                     <p class="text-slate-500 text-xs">CNPJ: 42.206.486/0001-69</p>
@@ -509,10 +509,10 @@
                 <div>
                     <h6 class="font-semibold text-white mb-4">Navegação</h6>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="index.html#como-funciona" class="hover:text-white transition">Como Funciona</a></li>
-                        <li><a href="index.html#analise" class="hover:text-white transition">Análise Instantânea</a></li>
-                        <li><a href="index.html#planos" class="hover:text-white transition">Planos</a></li>
-                        <li><a href="index.html#contato" class="hover:text-white transition">Contato</a></li>
+                        <li><a href="#como-funciona" class="hover:text-white transition">Como Funciona</a></li>
+                        <li><a href="#analise" class="hover:text-white transition">Análise Instantânea</a></li>
+                        <li><a href="#planos" class="hover:text-white transition">Planos</a></li>
+                        <li><a href="#contato" class="hover:text-white transition">Contato</a></li>
                     </ul>
                 </div>
 

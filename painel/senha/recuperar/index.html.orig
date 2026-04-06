@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Senha - Liveb Bank S/A</title>
+    <title>Recuperar Senha - Liveb Bank</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
         <!-- Logo -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-lg mb-4 p-3">
-                <img src="/static/images/liveb-logo.png" alt="Liveb Bank S/A" class="h-12 w-auto object-contain">
+                <img src="/static/images/liveb-logo.png" alt="Liveb Bank" class="h-12 w-auto object-contain">
             </div>
             <h1 class="text-2xl font-bold text-white">Recuperar Senha</h1>
             <p class="text-white/70 mt-1">Digite seu e-mail para receber o link</p>
