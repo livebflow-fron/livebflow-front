@@ -1,10 +1,12 @@
 -- Limpa as tabelas (opcional, para garantir que não duplique se recriar)
 TRUNCATE TABLE propostas, imobiliarias, usuarios RESTART IDENTITY CASCADE;
 
--- Criando um usuário de teste (A senha '123456' no formato puro, caso seu sistema valide texto puro no MVP, senao tera que criar a hash e ajustar)
+-- Criando um usuário de teste (A senha agora está hasheada em SHA-256 para o MVP funcionar com a verificação)
 INSERT INTO usuarios (email, senha, perfil) VALUES
-('consultor@livebbank.com.br', '123456', 'CONSULTOR'),
-('admin@livebbank.com.br', 'admin123', 'ADMIN');
+('consultor@livebbank.com.br', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'CONSULTOR'), -- 123456
+('admin@livebbank.com.br', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'ADMIN'), -- admin123
+('teste1@livebbank.com.br', '553e4b77dc1c1f7601ad02e960f2e0ff30dcb9747cd49fd632f05a96db4da898', 'CONSULTOR'), -- teste1
+('teste2@livebbank.com.br', '24d4b8fdfa0684f8db9f1b954df0b0ee111cc21b8bbfcd8da1fedced3c896e38', 'CONSULTOR'); -- teste2
 
 -- Criando Imobiliárias fictícias
 INSERT INTO imobiliarias (razao_social, cnpj, email, telefone) VALUES
