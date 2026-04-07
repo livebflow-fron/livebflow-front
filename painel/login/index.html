@@ -34,51 +34,21 @@
         <p class="text-white/80 text-sm">Acesse sua conta</p>
     </div>
 
-        <!-- Login Card -->
-        <div class="card bg-white shadow-xl">
-            <div class="card-body">
+    <!-- Main Card -->
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-[400px] p-8 box-border">
+        
+        <form id="login-form" class="space-y-5" onsubmit="event.preventDefault(); window.location.href='../../painel-interno.html';">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1.5">E-mail</label>
+                <input type="email" name="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm" placeholder="seu@email.com" required>
+            </div>
 
-                <!-- Mensagem de erro -->
-                <div id="login-error" class="hidden alert alert-error text-sm py-2 px-4 mb-2">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    <span id="login-error-msg">Email ou senha inválidos.</span>
-                </div>
-
-                <form id="login-form" class="space-y-4">
-
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text font-medium">E-mail</span>
-                        </label>
-                        <input type="email" name="email" class="input input-bordered w-full" placeholder="seu@email.com" autofocus maxlength="150" required id="id_username">
-                    </div>
-
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text font-medium">Senha</span>
-                        </label>
-                        <div class="relative">
-                            <input type="password" name="senha" id="password" required
-                                   class="input input-bordered w-full pr-10"
-                                   placeholder="Sua senha">
-                            <button type="button" onclick="togglePassword('password', 'toggleIcon1')"
-                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700">
-                                <i id="toggleIcon1" class="bi bi-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between">
-                        <label class="label cursor-pointer gap-2">
-                            <input type="checkbox" class="checkbox checkbox-sm checkbox-primary">
-                            <span class="label-text">Lembrar-me</span>
-                        </label>
-                        <a href="../senha/recuperar/index.html" class="text-sm text-primary hover:underline">Esqueceu a senha?</a>
-                    </div>
-
-                    <button type="submit" id="btn-login" class="btn btn-primary w-full">
-                        <i class="bi bi-box-arrow-in-right mr-2"></i>
-                        Entrar
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Senha</label>
+                <div class="relative">
+                    <input type="password" name="senha" id="password" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm pr-10" placeholder="Sua senha" required>
+                    <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                        <i id="toggleIcon" class="bi bi-eye"></i>
                     </button>
                 </div>
             </div>
@@ -108,74 +78,6 @@
             </a>
         </div>
     </div>
-<script>
-function togglePassword(inputId, iconId) {
-    const input = document.getElementById(inputId);
-    const icon = document.getElementById(iconId);
-    if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.remove('bi-eye');
-        icon.classList.add('bi-eye-slash');
-    } else {
-        input.type = 'password';
-        icon.classList.remove('bi-eye-slash');
-        icon.classList.add('bi-eye');
-    }
-}
-
-// Redireciona se já estiver logado
-if (localStorage.getItem('token')) {
-    window.location.href = '../../painel-interno.html';
-}
-
-document.getElementById('login-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const errorBox = document.getElementById('login-error');
-    const errorMsg = document.getElementById('login-error-msg');
-    const btn = document.getElementById('btn-login');
-
-    errorBox.classList.add('hidden');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="loading loading-spinner loading-sm"></span> Entrando...';
-
-    const payload = {
-        email: document.getElementById('id_username').value,
-        senha: document.getElementById('password').value
-    };
-
-    try {
-        const response = await fetch('http://localhost:8080/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-
-        const data = await response.json().catch(() => null);
-
-        if (!response.ok) {
-            errorMsg.textContent = data?.message || 'Email ou senha inválidos.';
-            errorBox.classList.remove('hidden');
-            return;
-        }
-
-        // Salva token e dados do usuário
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('perfil', data.perfil);
-        localStorage.setItem('email', data.email);
-
-        // Redireciona para o painel interno
-        window.location.href = '../../painel-interno.html';
-
-    } catch (err) {
-        errorMsg.textContent = 'Não foi possível conectar ao servidor. Tente novamente.';
-        errorBox.classList.remove('hidden');
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="bi bi-box-arrow-in-right mr-2"></i> Entrar';
-    }
-});
-</script>
 
     <!-- Footer -->
     <div class="mt-8 text-center">

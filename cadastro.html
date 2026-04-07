@@ -227,11 +227,6 @@
         const feedback = document.getElementById('feedback');
         let feedbackTimeoutId;
 
-        // Proteção: redireciona para login se não estiver autenticado
-        if (!localStorage.getItem('token')) {
-            window.location.href = 'painel/login/index.html';
-        }
-
         function clearFeedback() {
             feedback.className = 'hidden rounded-lg border px-4 py-3 text-sm';
             feedback.textContent = '';
@@ -275,8 +270,7 @@
                 const response = await fetch('/api/imobiliarias', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(payload)
                 });

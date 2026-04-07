@@ -24,9 +24,3 @@ CREATE TABLE IF NOT EXISTS propostas (
         FOREIGN KEY (imobiliaria_id)
         REFERENCES imobiliarias(id)
 );
-
--- Usuário administrador padrão (senha: admin123)
-INSERT INTO usuarios (email, senha, perfil)
-VALUES ('admin@livebbank.com.br', '$2a$10$s3BzWEq7AfaF2gR0Fy9mH.MpYpYGYlthQrELSyfpVYPfZMHJyrD.K', 'ADMIN')
-ON CONFLICT (email) DO NOTHING;
-

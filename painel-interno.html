@@ -42,16 +42,6 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50">
-
-<script>
-    // Proteção: redireciona para login se não estiver autenticado
-    (function() {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            window.location.href = 'painel/login/index.html';
-        }
-    })();
-</script>
     <!-- Navbar -->
     <nav class="navbar bg-base-100 shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4">
@@ -76,18 +66,18 @@
             <!-- CTA Buttons / User Profile -->
             <div class="hidden lg:flex items-center gap-3 ml-4">
                 <div class="flex flex-col text-right mr-2">
-                    <span class="text-sm font-bold text-slate-800" id="navbar-perfil">Administrador</span>
-                    <span class="text-xs text-slate-500" id="navbar-email">Liveb Bank</span>
+                    <span class="text-sm font-bold text-slate-800">Administrador</span>
+                    <span class="text-xs text-slate-500">Liveb Bank S/A</span>
                 </div>
                 <div class="avatar placeholder">
                   <div class="bg-blue-100 text-primary rounded-full w-10">
-                    <span class="font-semibold" id="navbar-iniciais">AD</span>
+                    <span class="font-semibold">AD</span>
                   </div>
                 </div>
                 <!-- Sair Button -->
-                <button onclick="logout()" class="btn btn-outline btn-error btn-sm ml-2">
+                <a href="painel/login/index.html" class="btn btn-outline btn-error btn-sm ml-2">
                     <i class="bi bi-box-arrow-right"></i> Sair
-                </button>
+                </a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -110,7 +100,7 @@
                 <li><a href="cadastro.html">Nova Imobiliária</a></li>
                 <li><a href="nova-fianca.html">Nova Fiança</a></li>
                 <li class="mt-4">
-                    <button onclick="logout()" class="btn btn-error btn-outline mt-auto w-full">Sair</button>
+                    <a href="painel/login/index.html" class="btn btn-error btn-outline mt-auto">Sair</a>
                 </li>
             </ul>
         </div>
@@ -486,23 +476,6 @@
         </div>
     </footer>
 
-<script>
-    // Preenche dados do usuário no navbar
-    const email = localStorage.getItem('email') || 'usuario@livebbank.com.br';
-    const perfil = localStorage.getItem('perfil') || 'CONSULTOR';
-    const iniciais = email.substring(0, 2).toUpperCase();
-
-    document.getElementById('navbar-email').textContent = email;
-    document.getElementById('navbar-perfil').textContent = perfil;
-    document.getElementById('navbar-iniciais').textContent = iniciais;
-
-    function logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('perfil');
-        localStorage.removeItem('email');
-        window.location.href = 'painel/login/index.html';
-    }
-</script>
     <!-- Scripts de Interatividade -->
     <script>
         // Funcionalidade das abas
